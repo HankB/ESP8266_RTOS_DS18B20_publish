@@ -31,13 +31,19 @@ void app_main()
     time_t uptime;
     static int loop_delay_sec = 10;
 
+    printf("init_wifi()\n");
     init_wifi();
+    printf("mqtt_start()\n");
     mqtt_start();
+    printf("init_sntp()\n");
     init_sntp();
+    printf("print_my_info()\n");
     print_my_info();
+    printf("init_gpio()\n");
     init_gpio();
     ESP_LOGI(TAG, "[APP] Free memory: %d bytes", esp_get_free_heap_size());
     ESP_LOGI(TAG, "[APP] IDF version: %s", esp_get_idf_version());
+    printf("Hello there!\n");
     
     while( true) {
         now = time(0);
