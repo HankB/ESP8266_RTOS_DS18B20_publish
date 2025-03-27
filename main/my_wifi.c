@@ -48,6 +48,7 @@ static const char *TAG = "wifi";
 static void event_handler(void* arg, esp_event_base_t event_base,
                                 int32_t event_id, void* event_data)
 {
+    printf("event_handler() base %ssid, id %d\n", event_base, event_id);
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
         esp_wifi_connect();
         ESP_LOGI(TAG, "try to connect to the AP");
@@ -105,8 +106,8 @@ void init_wifi(void)
             pdFALSE,
             pdFALSE,
             portMAX_DELAY);
-
-    /* xEventGroupWaitBits() returns the bits before the call returned, hence we can test which event actually
+    ESP_LOGI(TAG, "xEventGroupWaitBits() returned.");
+            /* xEventGroupWaitBits() returns the bits before the call returned, hence we can test which event actually
      * happened. */
     if (bits & WIFI_CONNECTED_BIT) {
         ESP_LOGI(TAG, "connected to ap SSID:%s password:%s",
