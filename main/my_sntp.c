@@ -22,6 +22,6 @@ void init_sntp(void)
 {
     ESP_LOGI(TAG, "Init SNTP");
     sntp_setoperatingmode(SNTP_OPMODE_POLL);
-    sntp_setservername(0, "pfsense.localdomain");
+    sntp_setservername(0, "pool.ntp.org");
     sntp_init();    
 }
