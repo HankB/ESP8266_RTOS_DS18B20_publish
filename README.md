@@ -26,10 +26,14 @@ python -m pip install -r $IDF_PATH/requirements.txt # Note: --user elided
 
 ## Status
 
-* 2025-03-26 Working on getting the starting poiunt working, but first the README. 
+* 2025-04-13 WiFi, MQTT, and NTP working.
+* 2025-03-26 Working on getting the starting point working, but first the README.
 
 ## TODO
 
-* Get existing parts working.
+* ~~Get existing parts working.~~
+* Add DS18B20
 
 ## Errata
+
+Build error in Debian Testing (AKA Trixie) complaining about missing ncurses library is fixed by the tweak listed in <https://github.com/espressif/esp-idf/issues/14809#issuecomment-2450694593>.
