@@ -1,3 +1,5 @@
 build
 sdkconfig*
 secrets.h
+CMakeLists.txt
+.vscode

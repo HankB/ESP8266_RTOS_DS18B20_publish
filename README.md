@@ -34,6 +34,46 @@ python -m pip install -r $IDF_PATH/requirements.txt # Note: --user elided
 * ~~Get existing parts working.~~
 * Add DS18B20
 
+## DS18B20 driver
+
+* <https://github.com/aZholtikov/zh_ds18b20>
+* <https://github.com/aZholtikov/zh_onewire>
+
+Results are inconsistent. A couple times the driver reported a valid device but never measured a temperature:
+
+```text
+I (1519) zh_onewire: Onewire initialization success.
+I (1527) zh_onewire: Onewire reset begin.
+I (1536) zh_onewire: Onewire reset success.
+I (1542) zh_onewire: Onewire search ROM begin.
+I (1550) zh_onewire: Onewire reset begin.
+I (1558) zh_onewire: Onewire reset success.
+I (1591) zh_onewire: Onewire search ROM success.
+Found device ROM: 28 DE 2F 57 0 0 0 0 
+I (1594) zh_ds18b20: DS18B20 read begin.
+I (1596) zh_onewire: Onewire match ROM begin.
+I (1604) zh_onewire: Onewire reset begin.
+I (1612) zh_onewire: Onewire reset success.
+I (1630) zh_onewire: Onewire match ROM success.
+I (2375) zh_onewire: Onewire match ROM begin.
+I (2376) zh_onewire: Onewire reset begin.
+I (2379) zh_onewire: Onewire reset success.
+I (2392) zh_onewire: Onewire match ROM success.
+E (2406) zh_ds18b20: DS18B20 read fail. Invalid CRC.
+Temperature: 
+I (2408) zh_onewire: Onewire search ROM begin.
+I (2409) zh_onewire: Onewire search ROM terminated.
+```1
+
+Usually
+
+```text
+I (1519) zh_onewire: Onewire initialization success.
+I (1527) zh_onewire: Onewire reset begin.
+E (1535) zh_onewire: Onewire reset fail. Timeout exceeded.
+There are no 1-Wire devices available on the bus.
+```
+
 ## Errata
 
 Build error in Debian Testing (AKA Trixie) complaining about missing ncurses library is fixed by the tweak listed in <https://github.com/espressif/esp-idf/issues/14809#issuecomment-2450694593>.

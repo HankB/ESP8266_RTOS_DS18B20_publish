@@ -18,6 +18,7 @@
 #include "my_wifi.h"
 #include "my_mqtt.h"
 #include "my_sntp.h"
+#include "my_ds18b20.h"
 
 static const char *TAG = "user_main";
 
@@ -41,6 +42,9 @@ void app_main()
     print_my_info();
     printf("init_gpio()\n");
     init_gpio();
+    printf("init_ds18b20()\n");
+    init_ds18b20();
+    
     ESP_LOGI(TAG, "[APP] Free memory: %d bytes", esp_get_free_heap_size());
     ESP_LOGI(TAG, "[APP] IDF version: %s", esp_get_idf_version());
     printf("Hello there!\n");
@@ -68,6 +72,7 @@ void app_main()
         snprintf(publish_buf, publish_buf_len, "hello world heap:%d, t:%ld, uptime:%ld",
                         esp_get_free_heap_size(), now, uptime);
         mqtt_publish(NULL, publish_buf);
+        printf("DS18B20 %d\n", read_ds18b20());
         vTaskDelay(1000*loop_delay_sec / portTICK_PERIOD_MS); // publish every loop_delay_sec s.
     }
 
