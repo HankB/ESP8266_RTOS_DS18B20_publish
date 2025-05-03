@@ -52,7 +52,9 @@ python -m pip install -r $IDF_PATH/requirements.txt # Note: --user elided
 
 Generally incomplete but all parts more or less working.
 
-*Note: This is tested with the sensor on D4 (AKA #2) and that is the same as the built in LED so that is presently commented out.
+*~~Note: This is tested with the sensor on D4 (AKA #2) and that is the same as the built in LED so that is presently commented out.~~
+
+DS18B20 DATA pin has been moved to D2 (#4) to eliminate conflict with the builtin LED.
 
 * 2025-05-02 Working DS18B20
 * 2025-04-13 WiFi, MQTT, and NTP working.
