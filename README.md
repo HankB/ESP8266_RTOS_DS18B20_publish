@@ -24,12 +24,22 @@ Following instructions at <https://docs.espressif.com/projects/esp8266-rtos-sdk/
 ```text
 cd .. # (from project folder)
 git clone https://github.com/UncleRus/esp-idf-lib.git
-cat << EOF >> components.mk
-PROJECT_NAME := $(basename $PWD)
+cat << EOF >> Makefile
 EXTRA_COMPONENT_DIRS := /home/user/myprojects/esp/esp-idf-lib/components
 EXCLUDE_COMPONENTS := ads130e08 max7219 mcp23x17 led_strip max31865 ls7366r max31855
-include $(IDF_PATH)/make/project.mk
+EOF
 ```
+
+and
+
+```text
+make defconfig # or "make menuconfig" to tweak things.
+make # to build
+make flash # to build & flash
+make monitor # to start monitor. Exit with "<ctrl>]"
+```
+
+### Build environment setup
 
 ```text
 python -m venv /home/hbarta/espressif_venv
@@ -40,13 +50,18 @@ python -m pip install -r $IDF_PATH/requirements.txt # Note: --user elided
 
 ## Status
 
+Generally incomplete but all parts more or less working.
+
+*Note: This is tested with the sensor on D4 (AKA #2) and that is the same as the built in LED so that is presently commented out.
+
+* 2025-05-02 Working DS18B20
 * 2025-04-13 WiFi, MQTT, and NTP working.
 * 2025-03-26 Working on getting the starting point working, but first the README.
 
 ## TODO
 
 * ~~Get existing parts working.~~
-* Add DS18B20 - using <https://github.com/UncleRus/esp-idf-lib>
+* ~~Add DS18B20 - using <https://github.com/UncleRus/esp-idf-lib>~~
 
 ## Errata
 

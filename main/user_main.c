@@ -18,6 +18,7 @@
 #include "my_wifi.h"
 #include "my_mqtt.h"
 #include "my_sntp.h"
+#include "my_ds18b20.h"
 
 static const char *TAG = "user_main";
 
@@ -39,8 +40,12 @@ void app_main()
     init_sntp();
     printf("print_my_info()\n");
     print_my_info();
+    /*
     printf("init_gpio()\n");
     init_gpio();
+    */
+    printf("init_DS18B20()\n");
+    init_DS18B20();
     ESP_LOGI(TAG, "[APP] Free memory: %d bytes", esp_get_free_heap_size());
     ESP_LOGI(TAG, "[APP] IDF version: %s", esp_get_idf_version());
     printf("Hello there!\n");
