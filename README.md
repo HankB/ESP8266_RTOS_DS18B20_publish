@@ -69,4 +69,5 @@ python -m pip install -r $IDF_PATH/requirements.txt # Note: --user elided
 
 ## Errata
 
-Build error in Debian Testing (AKA Trixie) complaining about missing ncurses library is fixed by the tweak listed in <https://github.com/espressif/esp-idf/issues/14809#issuecomment-2450694593>.
+* Build error in Debian Testing (AKA Trixie) complaining about missing ncurses library is fixed by the tweak listed in <https://github.com/espressif/esp-idf/issues/14809#issuecomment-2450694593>.
+* See also <https://github.com/HankB/ESP8266_Arduino_MQTT_NTP_DS18B20> for a variant of this project using the Arduino libraries and tool chain. The motivation for both variants is that an ESP32/Arduino variant <https://github.com/HankB/ESP32-Arduino-DS18B20_MQTT> runs for a few days and then stops. In addition I have several ESP8266s that I want to deploy using these sensors. I will test these for run time to see if either has the issue.
