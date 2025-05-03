@@ -40,8 +40,10 @@ void app_main()
     init_sntp();
     printf("print_my_info()\n");
     print_my_info();
+    /*
     printf("init_gpio()\n");
     init_gpio();
+    */
     printf("init_ds18b20()\n");
     init_ds18b20();
     

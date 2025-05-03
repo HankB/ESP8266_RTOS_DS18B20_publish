@@ -1,5 +1,7 @@
 # ESP8266 RTOS DS18B20 publish
 
+See Status below - this branch is presently set aside.
+
 Copied from <https://github.com/HankB/ESP8266_RTOS_Start> using it more or less as a template.
 
 FreeRTOS documentation at <https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos.html>
@@ -25,6 +27,17 @@ python -m pip install -r $IDF_PATH/requirements.txt # Note: --user elided
 ```
 
 ## Status
+
+Incomplete. Additions for DS18B20 don't compile.
+
+```text
+/home/hbarta/Programming/ESP8266/ESP8266_RTOS_DS18B20_publish/main/my_ds18b20.c:6:10: fatal error: zh_ds18b20.h: No such file or directory
+ #include "zh_ds18b20.h"
+          ^~~~~~~~~~~~~~
+compilation terminated.
+```
+
+Since the `esp-idf-lib` work is generally woreking (though far from complete) effort will be directed there.
 
 * 2025-04-13 WiFi, MQTT, and NTP working.
 * 2025-03-26 Working on getting the starting point working, but first the README.

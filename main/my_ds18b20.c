@@ -14,7 +14,7 @@ void init_ds18b20(void)
 {
     esp_log_level_set("zh_onewire", ESP_LOG_NONE);
     esp_log_level_set("zh_ds18b20", ESP_LOG_NONE);
-    zh_onewire_init(GPIO_NUM_5);
+    zh_onewire_init(GPIO_NUM_2);
     if (zh_onewire_reset() != ESP_OK)
     {
         printf("There are no 1-Wire devices available on the bus.\n");
