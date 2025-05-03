@@ -8,6 +8,25 @@ FreeRTOS documentation at <https://docs.espressif.com/projects/esp-idf/en/latest
 
 Configure an ESP8266 to read DS18B20 sensor(s) and publish treadings via MQTT.
 
+## Status
+
+Properly formatted payload published 1/minute (but more cleanup needed.)
+
+*~~Note: This is tested with the sensor on D4 (AKA #2) and that is the same as the built in LED so that is presently commented out.~~
+
+DS18B20 DATA pin has been moved to D2 (#4) to eliminate conflict with the builtin LED.
+
+* 2025-05-02 Working DS18B20
+* 2025-04-13 WiFi, MQTT, and NTP working.
+* 2025-03-26 Working on getting the starting point working, but first the README.
+
+## TODO
+
+* 2025-05-03 add DS18B20 ID to topic and payload.
+* 2025-05-03 better host nbame based on MAC.
+* ~~Get existing parts working.~~
+* ~~Add DS18B20 - using <https://github.com/UncleRus/esp-idf-lib>~~
+
 ## Build
 
 "Getting Started" guide at <https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/index.html>
@@ -47,23 +66,6 @@ cd /home/hbarta/espressif_venv
 . bin/activate
 python -m pip install -r $IDF_PATH/requirements.txt # Note: --user elided
 ```
-
-## Status
-
-Generally incomplete but all parts more or less working.
-
-*~~Note: This is tested with the sensor on D4 (AKA #2) and that is the same as the built in LED so that is presently commented out.~~
-
-DS18B20 DATA pin has been moved to D2 (#4) to eliminate conflict with the builtin LED.
-
-* 2025-05-02 Working DS18B20
-* 2025-04-13 WiFi, MQTT, and NTP working.
-* 2025-03-26 Working on getting the starting point working, but first the README.
-
-## TODO
-
-* ~~Get existing parts working.~~
-* ~~Add DS18B20 - using <https://github.com/UncleRus/esp-idf-lib>~~
 
 ## Errata
 

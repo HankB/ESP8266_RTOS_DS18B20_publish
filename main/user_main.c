@@ -19,17 +19,16 @@
 #include "my_mqtt.h"
 #include "my_sntp.h"
 #include "my_ds18b20.h"
+#include "my_main.h"
 
 static const char *TAG = "user_main";
+time_t uptime;
+time_t now;
 
 void app_main()
 {
-    #define publish_buf_len 100
-    static char publish_buf[publish_buf_len];
     time_t  boot_timestamp = 0;
     int  loop_count = 0;
-    time_t now;
-    time_t uptime;
     static int loop_delay_sec = 10;
 
     printf("init_wifi()\n");
@@ -67,11 +66,12 @@ void app_main()
         {
             uptime = now - boot_timestamp;
         }
-
+/*
         snprintf(publish_buf, publish_buf_len, "hello world heap:%d, t:%ld, uptime:%ld",
                         esp_get_free_heap_size(), now, uptime);
         mqtt_publish(NULL, publish_buf);
-        vTaskDelay(1000*loop_delay_sec / portTICK_PERIOD_MS); // publish every loop_delay_sec s.
+*/
+vTaskDelay(1000*loop_delay_sec / portTICK_PERIOD_MS); // publish every loop_delay_sec s.
     }
 
     esp_restart();
