@@ -25,6 +25,9 @@ static const char *TAG = "user_main";
 time_t uptime;
 time_t now;
 
+#define publish_buf_len 100
+char publish_buf[];
+
 void app_main()
 {
     time_t  boot_timestamp = 0;
@@ -66,12 +69,10 @@ void app_main()
         {
             uptime = now - boot_timestamp;
         }
-/*
         snprintf(publish_buf, publish_buf_len, "hello world heap:%d, t:%ld, uptime:%ld",
                         esp_get_free_heap_size(), now, uptime);
         mqtt_publish(NULL, publish_buf);
-*/
-vTaskDelay(1000*loop_delay_sec / portTICK_PERIOD_MS); // publish every loop_delay_sec s.
+        vTaskDelay(1000*loop_delay_sec / portTICK_PERIOD_MS); // publish every loop_delay_sec s.
     }
 
     esp_restart();
