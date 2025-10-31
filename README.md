@@ -16,6 +16,7 @@ Properly formatted payload published 1/minute (but more cleanup needed.)
 
 DS18B20 DATA pin has been moved to D2 (#4) to eliminate conflict with the builtin LED.
 
+* 2025-10-31 getting back to this 6 months later. Code did not build. :-/ Fixed that and it publishes generic message evert 10s.
 * 2025-05-02 Working DS18B20
 * 2025-04-13 WiFi, MQTT, and NTP working.
 * 2025-03-26 Working on getting the starting point working, but first the README.
@@ -23,7 +24,7 @@ DS18B20 DATA pin has been moved to D2 (#4) to eliminate conflict with the builti
 ## TODO
 
 * 2025-05-03 add DS18B20 ID to topic and payload.
-* 2025-05-03 better host nbame based on MAC.
+* 2025-05-03 better host name based on MAC.
 * ~~Get existing parts working.~~
 * ~~Add DS18B20 - using <https://github.com/UncleRus/esp-idf-lib>~~
 
