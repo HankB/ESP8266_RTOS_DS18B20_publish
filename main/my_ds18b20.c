@@ -27,8 +27,8 @@ static const uint32_t LOOP_DELAY_MS = (1000*60);
 static const char *TAG = "ds18x20_test";
 
 
-#define topic_len 100
-static char topic_buf[topic_len];
+#define payload_len 100
+static char payload_buf[payload_len];
 
 /*
 Can't see how to get floating point in printf() family so doin' it the hard way.
@@ -138,15 +138,13 @@ void ds18x20_publisher(void *pvParameter)
                         sensor_type(addrs[j]),
                         temp_c, temp_f);
 
-                printf("%d C %d F\n", (int)(temp_c*100),  (int)(temp_f*100));
-                printf("%.2f°F\n", temp_f);
                 // MQTT payload should look something like
                 // {"t":1746220529, "temp":77.00, "device":"DS18B20", "DS18B20_ID":"2838ef07b6013cd5"}
                 // and we can add the heap and uptime as well.
-                snprintf(topic_buf, topic_len, "{\"heap\":%d, \"t\":%ld, \"uptime\":%ld, \"temp\":%s, \"device\":\"%s\"}",
+                snprintf(payload_buf, payload_len, "{\"heap\":%d, \"t\":%ld, \"uptime\":%ld, \"temp\":%s, \"device\":\"%s\"}",
                     esp_get_free_heap_size(), now, uptime, format_temp(temp_f, temp_buffer), sensor_type(addrs[j]));
                 // TODO: build topic with host name and sensor ID
-                mqtt_publish("HA/esp8266.1/test/DS18B20_temp", topic_buf);
+                mqtt_publish("HA/esp8266.1/master_br/DS18B20", payload_buf);
             }
 
 
