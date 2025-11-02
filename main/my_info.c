@@ -10,7 +10,6 @@
 #include "my_info.h"
 
 void print_my_info(void) {
-    printf("Hello world!\n");
     /* Print chip information */
     esp_chip_info_t chip_info;
     esp_chip_info(&chip_info);
