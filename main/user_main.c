@@ -25,30 +25,20 @@ static const char *TAG = "user_main";
 time_t uptime;
 time_t now;
 
-#define publish_buf_len 100
-char publish_buf[];
-
 void app_main()
 {
     time_t  boot_timestamp = 0;
     int  loop_count = 0;
     static int loop_delay_sec = 10;
 
-    printf("init_wifi()\n");
     init_wifi();
-    printf("mqtt_start()\n");
     mqtt_start();
-    printf("init_sntp()\n");
     init_sntp();
-    printf("print_my_info()\n");
-    print_my_info();
-    printf("init_gpio()\n");
     init_gpio();
-    printf("init_DS18B20()\n");
     init_DS18B20();
+    print_my_info();
     ESP_LOGI(TAG, "[APP] Free memory: %d bytes", esp_get_free_heap_size());
     ESP_LOGI(TAG, "[APP] IDF version: %s", esp_get_idf_version());
-    printf("Hello there!\n");
     
     while( true) {
         now = time(0);
@@ -69,9 +59,6 @@ void app_main()
         {
             uptime = now - boot_timestamp;
         }
-        snprintf(publish_buf, publish_buf_len, "hello world heap:%d, t:%ld, uptime:%ld",
-                        esp_get_free_heap_size(), now, uptime);
-        mqtt_publish(NULL, publish_buf);
         vTaskDelay(1000*loop_delay_sec / portTICK_PERIOD_MS); // publish every loop_delay_sec s.
     }
 
